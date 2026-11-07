@@ -1,5 +1,6 @@
 #include <unistd.h>
 
+// Decides which character to print
 int	ft_putchar(int x, int y, int ix, int iy)
 {
 	if (ix == 0 && iy == 0)
@@ -16,6 +17,7 @@ int	ft_putchar(int x, int y, int ix, int iy)
 		return ('B');
 }
 
+// Controls the navigation and output
 void	rush(int x, int y)
 {
 	int	ix;
