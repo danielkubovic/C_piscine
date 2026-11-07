@@ -1,51 +1,44 @@
 #include <unistd.h>
 
-int	rush(int x, int y)
+int	ft_putchar(int x, int y, int ix, int iy)
 {
-	if (x < 1 || y < 1)
-	{
-		write(1, "Error! x OR y < 1\n", 18);
-		return (1);
-	}
-	x = x - 2;
-	y = y - 2;
-	int	x1 = x;
-	int	x2 = x;
+	if (ix == 0 && iy == 0)
+		return ('A');
+	else if (ix == 0 && iy == y - 1)
+		return ('C');
+	else if (ix == x - 1 && iy == 0)
+		return ('C');
+	else if (ix == x - 1 && iy == y - 1)
+		return ('A');
+	else if (ix > 0 && ix < x - 1 && iy > 0 && iy < y - 1)
+		return (' ');
+	else
+		return ('B');
+}
 
-	write(1, "A", 1);
-	while (x != 0)
-	{
-		write(1, "B", 1);
-		x--;
-	}
-	write(1, "C\n", 2);
-	// ------------------- end of first row ------------------
+void	rush(int x, int y)
+{
+	int	ix;
+	int	iy;
+	char	c;
 
-	while (y != 0)
+	iy = 0;
+	while (iy < y)
 	{
-		write(1, "B", 1);
-		while(x1 != 0)
+		ix = 0;
+		while (ix < x)
 		{
-			write(1, " ", 1);
-			x1--;
+			c = ft_putchar(x, y, ix, iy);
+			write(1, &c, 1);
+			ix++;
 		}
-		write(1, "B\n", 2);
-		y--;
-		x1 = x2;
+		write(1, "\n", 1);
+		iy++;
 	}
-	// -------------------- start of last row --------------------------
-	write(1, "C", 1);
-
-	while (x2 != 0)
-	{
-		write(1, "B", 1);
-		x2--;
-	}
-	write(1, "A\n", 2);
-	return (0);
 }
 
 int	main(void)
 {
-	rush(0, 4);
+	rush(1, 5);
+	return (0);
 }
