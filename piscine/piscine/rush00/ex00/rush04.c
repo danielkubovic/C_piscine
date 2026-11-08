@@ -1,46 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush04.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dankubov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/08 14:41:47 by dankubov          #+#    #+#             */
+/*   Updated: 2026/11/08 17:06:08 by dankubov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Decides which character to print
-int	ft_putchar(int x, int y, int ix, int iy)
-{
-	if (ix == 0 && iy == 0)
-		return ('A');
-	else if (ix == 0 && iy == y - 1)
-		return ('C');
-	else if (ix == x - 1 && iy == 0)
-		return ('C');
-	else if (ix == x - 1 && iy == y - 1)
-		return ('A');
-	else if (ix > 0 && ix < x - 1 && iy > 0 && iy < y - 1)
-		return (' ');
-	else
-		return ('B');
-}
+char ft_putchar(int x, int y, int ix, int iy);
 
-// Controls the navigation and output
 void	rush(int x, int y)
 {
-	int	ix;
-	int	iy;
+	int		ix;
+	int		iy;
 	char	c;
 
-	iy = 0;
-	while (iy < y)
+	if (x < 0 || y < 0 || x > 211 || y > 21474)
 	{
-		ix = 0;
-		while (ix < x)
-		{
-			c = ft_putchar(x, y, ix, iy);
-			write(1, &c, 1);
-			ix++;
-		}
-		write(1, "\n", 1);
-		iy++;
+		write(1, "Error!", 6);
 	}
-}
-
-int	main(void)
-{
-	rush(1, 5);
-	return (0);
+	else
+	{
+		iy = 0;
+		while (iy < y)
+		{
+			ix = 0;
+			while (ix < x)
+			{
+				c = ft_putchar(x, y, ix, iy);
+				write(1, &c, 1);
+				ix++;
+			}
+			write(1, "\n", 1);
+			iy++;
+		}
+	}
 }

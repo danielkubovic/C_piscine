@@ -1,0 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush04.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dankubov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/07 16:56:59 by dankubov          #+#    #+#             */
+/*   Updated: 2026/11/07 18:33:08 by dankubov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+char	ft_putchar(int ix, int iy)
+{
+	if (ix == x)
+		return '\n';
+	ix++;
+	iy++;
+	return ('A');
+}
+
+int	rush(int x, int y)
+{
+	int	ix;
+	int	iy;
+	char	c;
+
+	ix = 0;
+	iy = 0;
+	if (x < 1 || y < 1)
+	{
+		write(1, "Error! x OR y < 1\n", 18);
+		return (1);
+	}
+	while (x != 0 && y != 0)
+	{
+		c = ft_putchar(ix, iy);
+		write(1, &c, 1);
+		x--;
+	}
+
+	return (0);
+}
+
+int	main(void)
+{
+	rush(6, 4);
+}
